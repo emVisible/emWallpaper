@@ -1,33 +1,28 @@
 import '@renderer/assets/global.scss'
-import { store } from '@renderer/redux'
-import { ConfigProvider, ThemeConfig } from 'antd'
-import { Provider } from 'react-redux'
-import { Route, Routes, useLocation } from 'react-router'
+import { Layout } from 'antd'
+import { Content, Footer, Header } from 'antd/es/layout/layout'
+// import { Navigate,  Routes } from 'react-router'
 import Btn from './components/btn'
-import config from './components/config'
-import home from './components/home'
+import Config from './components/config'
+import Home from './components/home'
+import ErrorPage from './components/error'
+import { Route, Routes, Navigate, BrowserRouter } from 'react-router-dom'
 function App(): JSX.Element {
-  const { pathname } = useLocation()
-  const antdConfig: ThemeConfig = {
-    components: {
-      Button: {
-        linkHoverBg: '#58B19F'
-      }
-    }
-  }
-
   return (
-    <>
-      <Provider store={store}>
-        <ConfigProvider theme={antdConfig}>
-          <Btn path={pathname} />
+    <Layout className="h-screen">
+      {/* <Header className="bg-[#2d3436] flex justify-center items-center"></Header> */}
+      <Content className="flex justify-center items-center overflow-scroll min-h-[300px]">
           <Routes>
-            <Route path="home" Component={home} />
-            <Route path="config" Component={config} />
+            <Route path="/" element={<Navigate to="/home"></Navigate>} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/config" element={<Config></Config>} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
-        </ConfigProvider>
-      </Provider>
-    </>
+      </Content>
+      <Footer className="bg-[#2d3436] flex justify-center items-center">
+        <Btn />
+      </Footer>
+    </Layout>
   )
 }
 

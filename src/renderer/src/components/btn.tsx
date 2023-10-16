@@ -1,18 +1,17 @@
-import { Config, StereoNesting, Tips } from '@icon-park/react'
+import { Config, StereoNesting } from '@icon-park/react'
 import '@renderer/assets/global.scss'
-import { Button } from 'antd'
-import { BrowserRouter, Link, Routes, redirect, useLocation } from 'react-router-dom'
-import { useAppSelector, useAppDispatch } from '@renderer/redux/hooks'
+import { useAppDispatch, useAppSelector } from '@renderer/redux/hooks'
 import { stateChange } from '@renderer/redux/routeReducer'
+import { Button } from 'antd'
+import { BrowserRouter, Link, Navigate, Router, useLocation } from 'react-router-dom'
 import ErrorPage from './error'
-import { useEffect } from 'react'
 
 /**
  * 定义路由以及跳转
  * ??? 为什么会一次加载两遍 ?
  */
 export default function (props) {
-  const pathname = props.path
+  const pathname = useLocation().pathname
   const routeState = useAppSelector((state) => state.route.value)
   const dispatch = useAppDispatch()
 
@@ -45,7 +44,7 @@ export default function (props) {
           </Link>
         </Button>
       ) : (
-        <ErrorPage />
+        <></>
       )}
     </>
   )

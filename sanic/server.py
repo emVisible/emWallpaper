@@ -19,4 +19,5 @@ def list_urls(request):
     for url in urls:
       # yield await get(url)
       url_list.append(url)
-  return json(url_list, dumps=dumps)
+  print(url_list[:30])
+  return json(url_list[:30], dumps=dumps)
