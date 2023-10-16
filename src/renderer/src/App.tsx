@@ -2,15 +2,12 @@ import '@renderer/assets/global.scss'
 import { store } from '@renderer/redux'
 import { ConfigProvider, ThemeConfig } from 'antd'
 import { Provider } from 'react-redux'
-import { Route, Routes, redirect, useLocation } from 'react-router'
+import { Route, Routes, useLocation } from 'react-router'
 import Btn from './components/btn'
-import home from './components/home'
 import config from './components/config'
+import home from './components/home'
 function App(): JSX.Element {
   const { pathname } = useLocation()
-  if (pathname == '/') {
-    redirect('/home')
-  }
   const antdConfig: ThemeConfig = {
     components: {
       Button: {
