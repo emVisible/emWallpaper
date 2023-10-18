@@ -7,8 +7,8 @@ import time
 
 class WallpaperSpider(scrapy.Spider):
     name = "wallpaper"
-    sleep_time = 1
-    batch_size = 10
+    sleep_time = 0
+    batch_size = 1
 
     def _sleep(self) -> None:
         time.sleep(self.sleep_time)
