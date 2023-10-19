@@ -25,7 +25,8 @@ const router = createBrowserRouter(
 const antdConfig: ThemeConfig = {
   components: {
     Button: {
-      linkHoverBg: '#58B19F'
+      linkHoverBg: '#58B19F',
+      
     }
   }
 }

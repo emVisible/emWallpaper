@@ -5,9 +5,7 @@ import { pipeline } from 'stream'
 import { promisify } from 'util'
 
 
-const getWin = (win: Electron.IpcMainEvent | Electron.IpcMainInvokeEvent) => {
-  return BrowserWindow.fromWebContents(win.sender)
-}
+
 
 ipcMain.on('download', async (event, url: string, fileDefaultName:string) => {
   createMenu(url, fileDefaultName)

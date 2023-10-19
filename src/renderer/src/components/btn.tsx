@@ -22,7 +22,7 @@ export default function (props) {
           onClick={() => {
             dispatch(stateChange({ value: 'config' }))
           }}
-          type={'link'}
+          type='link'
           className="flex justify-center items-center border-0"
           shape="circle"
         >
@@ -36,7 +36,7 @@ export default function (props) {
             dispatch(stateChange({ value: 'home' }))
           }}
           className="flex justify-center items-center"
-          type={'link'}
+          type='link'
           shape="circle"
         >
           <Link to="/home">

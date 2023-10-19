@@ -5,6 +5,9 @@ import { electronAPI } from '@electron-toolkit/preload'
 const api = {
   downloadImage(url, name) {
     ipcRenderer.send('download', url, name)
+  },
+  openSystemDirectory(){
+    return ipcRenderer.invoke('openSystemDirectory')
   }
 }
 

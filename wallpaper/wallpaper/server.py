@@ -35,6 +35,7 @@ async def list_urls(request):
     return json(url_list, dumps=dumps)
 
 
+
 async def crawl():
     print("⭐⭐⭐⭐⭐⭐Start")
     crawler = CrawlerProcess(get_project_settings())
