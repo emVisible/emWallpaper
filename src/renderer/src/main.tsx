@@ -12,7 +12,9 @@ import App from './App'
 import config from './components/config'
 import ErrorPage from './components/error'
 import home from './components/home'
-import { store } from './redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from 'redux-persist'
+import store from './redux'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="*" Component={App}>
@@ -22,11 +24,11 @@ const router = createBrowserRouter(
     </Route>
   )
 )
+const persistor = persistStore(store)
 const antdConfig: ThemeConfig = {
   components: {
     Button: {
-      linkHoverBg: '#58B19F',
-      
+      linkHoverBg: '#58B19F'
     }
   }
 }
@@ -34,7 +36,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ConfigProvider theme={antdConfig}>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <PersistGate loading={null} persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </ConfigProvider>
   </React.StrictMode>

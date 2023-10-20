@@ -5,6 +5,7 @@ import { stateChange } from '@renderer/redux/routeReducer'
 import { Button } from 'antd'
 import { BrowserRouter, Link, Navigate, Router, useLocation } from 'react-router-dom'
 import ErrorPage from './error'
+import store from '@renderer/redux'
 
 /**
  * 定义路由以及跳转
@@ -12,15 +13,17 @@ import ErrorPage from './error'
  */
 export default function (props) {
   const pathname = useLocation().pathname
-  const routeState = useAppSelector((state) => state.route.value)
-  const dispatch = useAppDispatch()
+
+  // const routeState = useAppSelector((state) => state.route.value)
+  // const dispatch = useAppDispatch()
+  const routeState = store.getState().routeReducer.value
 
   return (
     <>
       {pathname == '/home' ? (
         <Button
           onClick={() => {
-            dispatch(stateChange({ value: 'config' }))
+            store.dispatch(stateChange({ value: 'config' }))
           }}
           type='link'
           className="flex justify-center items-center border-0"
@@ -33,7 +36,7 @@ export default function (props) {
       ) : pathname == '/config' ? (
         <Button
           onClick={() => {
-            dispatch(stateChange({ value: 'home' }))
+            store.dispatch(stateChange({ value: 'home' }))
           }}
           className="flex justify-center items-center"
           type='link'

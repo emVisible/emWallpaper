@@ -5,7 +5,7 @@ import { Content, Header } from 'antd/es/layout/layout'
 export default function () {
   const [urls, setUrls]: any = useState([])
   const getAll = async () => {
-    await fetch('http://127.0.0.1:8000/api/all')
+    fetch('http://127.0.0.1:8000/api/all')
       .then((r) => r.json())
       .then((list) => {
         setUrls((prevUrls) => [...prevUrls, ...list])
