@@ -11,15 +11,15 @@ function App(): JSX.Element {
   return (
     <Layout className="h-screen">
       {/* <Header className="bg-[#2d3436] flex justify-center items-center"></Header> */}
-      <Content className="flex justify-center items-center overflow-scroll min-h-[300px]">
-          <Routes>
-            <Route path="/" element={<Navigate to="/home"></Navigate>} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/config" element={<Config></Config>} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
+      <Content className="overflow-auto min-h-[300px] px-4 py-2">
+        <Routes>
+          <Route path="/" element={<Navigate to="/home"></Navigate>} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/config" element={<Config></Config>} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
       </Content>
-      <Footer className="bg-[#2d3436] flex justify-center items-center">
+      <Footer className="drag bg-[#2d3436] flex justify-center items-center py-3">
         <Btn />
       </Footer>
     </Layout>

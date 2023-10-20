@@ -24,6 +24,7 @@
     "@electron-toolkit/utils": "^2.0.0",
     "@icon-park/react": "^1.4.2",
     "@reduxjs/toolkit": "^1.9.7",
+    "@supercharge/promise-pool": "^3.1.0",
     "@types/node-schedule": "^2.1.1",
     "@types/react-redux": "^7.1.27",
     "antd": "^5.10.0",

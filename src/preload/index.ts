@@ -3,8 +3,8 @@ import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
 const api = {
-  downloadImage(url, name) {
-    ipcRenderer.send('download', url, name)
+  downloadImage(url, name, configPath) {
+    ipcRenderer.send('download', url, name, configPath)
   },
   openSystemDirectory(){
     return ipcRenderer.invoke('openSystemDirectory')

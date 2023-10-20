@@ -1,30 +1,52 @@
-import { Button, Image, Space } from 'antd'
+import store from '@renderer/redux'
+import { Card, Col, Image, Row } from 'antd'
 import { useEffect, useState } from 'react'
-import { Content, Header } from 'antd/es/layout/layout'
+import { PromisePool } from '@supercharge/promise-pool'
 
 export default function () {
   const [urls, setUrls]: any = useState([])
-  const getAll = async () => {
-    fetch('http://127.0.0.1:8000/api/all')
-      .then((r) => r.json())
-      .then((list) => {
-        setUrls((prevUrls) => [...prevUrls, ...list])
-      })
-  }
-  const check = () => {
-    console.log(JSON.parse(urls[0]).url)
-    // setCurrent(JSON.parse(urls[0]).url)
-  }
+  const configPath = store.getState().configReducer.config.value
+
+  useEffect(() => {
+    let ignore = false
+    async function getAll() {
+      const res = await fetch('http://127.0.0.1:8000/api/all').then((r) => r.json())
+      if (ignore == true) {
+        await PromisePool.withConcurrency(1)
+          .for(res)
+          .withTaskTimeout(5)
+          .process(async (url, index, pool) => {
+            // console.log('url',url)pool
+            setUrls((prevUrls) => [...prevUrls, url])
+          })
+      }
+    }
+    getAll()
+    return () => {
+      ignore = true
+    }
+  }, [])
   return (
     <div>
-      {urls.map((item:{url:string, name:string}) => {
-        const {url, name} = item
-        return <Image key={name.match(/.+(?=\.)/)![0]} onAuxClick={()=>{
-          window.api.downloadImage(url, name)
-        }} src={url}></Image>
-      })}
-      <Button onClick={getAll}>get All</Button>
-      <Button onClick={check}>check</Button>
+      <Row>
+        <Image.PreviewGroup>
+          {urls.map((item: { url: string; name: string }) => {
+            const { url, name } = item
+            return (
+              <Col span={8} key={name.match(/.+(?=\.)/)![0]}>
+                <Card size="small">
+                  <Image
+                    onAuxClick={() => {
+                      window.api.downloadImage(url, name, configPath)
+                    }}
+                    src={url}
+                  ></Image>
+                </Card>
+              </Col>
+            )
+          })}
+        </Image.PreviewGroup>
+      </Row>
     </div>
   )
 }

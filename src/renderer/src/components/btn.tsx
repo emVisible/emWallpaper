@@ -19,13 +19,13 @@ export default function (props) {
   const routeState = store.getState().routeReducer.value
 
   return (
-    <>
+    <section className="nodrag">
       {pathname == '/home' ? (
         <Button
           onClick={() => {
             store.dispatch(stateChange({ value: 'config' }))
           }}
-          type='link'
+          type="link"
           className="flex justify-center items-center border-0"
           shape="circle"
         >
@@ -39,7 +39,7 @@ export default function (props) {
             store.dispatch(stateChange({ value: 'home' }))
           }}
           className="flex justify-center items-center"
-          type='link'
+          type="link"
           shape="circle"
         >
           <Link to="/home">
@@ -49,6 +49,6 @@ export default function (props) {
       ) : (
         <></>
       )}
-    </>
+    </section>
   )
 }

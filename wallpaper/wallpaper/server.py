@@ -1,5 +1,6 @@
 import asyncio
 import re
+import random
 
 from orjson import dumps
 from sanic.response import json, text
@@ -26,7 +27,10 @@ async def list_urls(request):
     url_list = []
     with open("./data/paths.txt", "r") as f:
         urls = f.readlines()
-        for url in urls[:30]:
+        print(len(urls))
+        begin = random.randint(1, len(urls)-30)
+        urls = urls[begin:begin+30]
+        for url in urls:
             # yield await get(url)
             file_name = re.findall(r"\w{6}\.\w{2}g", url)[0]
             url = re.findall(r"https.+\.\w{2}g", url)[0]

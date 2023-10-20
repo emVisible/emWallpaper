@@ -4,11 +4,8 @@ import path from 'path'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
 
-
-
-
-ipcMain.on('download', async (event, url: string, fileDefaultName:string) => {
-  createMenu(url, fileDefaultName)
+ipcMain.on('download', async (event, url: string, fileDefaultName: string, savePath: string) => {
+  createMenu(url, fileDefaultName, savePath)
 })
 
 const downloadFile = async (url: string, path: string) => {
@@ -22,7 +19,7 @@ const downloadFile = async (url: string, path: string) => {
   return path
 }
 
-const createMenu = (url:string, fileDefaultName:string) => {
+const createMenu = (url: string, fileDefaultName: string, savePath:string) => {
   const config = [
     {
       label: '下载',
@@ -30,7 +27,7 @@ const createMenu = (url:string, fileDefaultName:string) => {
         const res = await dialog.showSaveDialog({
           title: 'emWallpaper',
           message: 'emWallpaper',
-          defaultPath: path.join('C:\\__temp', fileDefaultName || "example.jpg"),
+          defaultPath: path.join(savePath, fileDefaultName || 'example.jpg'),
           properties: ['createDirectory']
         })
         if (!res.canceled && res.filePath) {

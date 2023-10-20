@@ -10,3 +10,17 @@
 .ant-btn-icon {
   // margin: 0 !important;
 }
+
+.drag {
+    -webkit-app-region: drag;
+  //   //菜单图标与文字间距
+    --mx-menu-placeholder-width: 10px !important;
+}
+
+.nodrag,
+input,
+select,
+textarea,
+option {
+  -webkit-app-region: no-drag;
+}

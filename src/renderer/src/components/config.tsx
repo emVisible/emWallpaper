@@ -18,8 +18,7 @@ export default function () {
     const res = await window.api.openSystemDirectory()
     if (res) {
       dispatch(saveConfig({ config: { value: res[0] || '' } }))
-    } else {
-      errorMsg()
+      location.reload()
     }
   }
 
@@ -28,7 +27,6 @@ export default function () {
       <Form name="savePath" onFinishFailed={errorMsg}>
         <Form.Item>
           <Card title="设置图片默认保存路径">
-            {config}
             <Input id="ipt" value={config} className="mb-4" />
             <Button
               type="link"
