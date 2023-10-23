@@ -35,7 +35,8 @@
     "react-router-dom": "6",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
-    "sass": "^1.69.3"
+    "sass": "^1.69.3",
+    "wallpaper": "5"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^1.0.1",
@@ -44,6 +45,7 @@
     "@types/node": "^18.17.5",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/wallpaper": "^2.5.1",
     "@vitejs/plugin-react": "^4.0.4",
     "autoprefixer": "^10.4.16",
     "electron": "^25.6.0",

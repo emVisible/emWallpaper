@@ -3,10 +3,19 @@ import { createWriteStream } from 'fs'
 import path from 'path'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
+import wallpaper from 'wallpaper'
 
-ipcMain.on('download', async (event, url: string, fileDefaultName: string, savePath: string) => {
-  createMenu(url, fileDefaultName, savePath)
-})
+ipcMain.on(
+  'download',
+  async (
+    event: Electron.IpcMainInvokeEvent,
+    url: string,
+    fileDefaultName: string,
+    savePath: string
+  ) => {
+    createMenu(url, fileDefaultName, savePath)
+  }
+)
 
 const downloadFile = async (url: string, path: string) => {
   const streamPipeline = promisify(pipeline)
@@ -19,7 +28,7 @@ const downloadFile = async (url: string, path: string) => {
   return path
 }
 
-const createMenu = (url: string, fileDefaultName: string, savePath:string) => {
+const createMenu = (url: string, fileDefaultName: string, savePath: string) => {
   const config = [
     {
       label: '下载',
@@ -34,6 +43,20 @@ const createMenu = (url: string, fileDefaultName: string, savePath:string) => {
           downloadFile(url, res.filePath).then(() => {
             console.log('save successfully')
           })
+        }
+      }
+    },
+    {
+      label: '设为壁纸',
+      async click() {
+        try {
+          const wallpaperPath = await downloadFile(
+            url,
+            path.join(savePath, fileDefaultName || 'example.jpg')
+          )
+          await wallpaper.set(wallpaperPath, { screen: 'all', scale: 'auto' })
+        } catch (e) {
+          console.trace(e)
         }
       }
     }

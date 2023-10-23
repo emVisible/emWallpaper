@@ -53,6 +53,9 @@ dependencies:
   sass:
     specifier: ^1.69.3
     version: 1.69.3
+  wallpaper:
+    specifier: '5'
+    version: 5.0.1
 
 devDependencies:
   '@electron-toolkit/eslint-config-prettier':
@@ -73,6 +76,9 @@ devDependencies:
   '@types/react-dom':
     specifier: ^18.2.7
     version: 18.2.7
+  '@types/wallpaper':
+    specifier: ^2.5.1
+    version: 2.5.1
   '@vitejs/plugin-react':
     specifier: ^4.0.4
     version: 4.0.4(vite@4.4.9)
@@ -1164,6 +1170,13 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@types/wallpaper@2.5.1:
+    resolution: {integrity: sha512-Xq6CygyeEdWkrL2tLS5tuJ/Le56StjmyrG1Q811ymCmDJSqWG5kgG/YBOslgfTixIOjzEhBUaY7I2K7lBzoQVg==}
+    deprecated: This is a stub types definition. wallpaper provides its own type definitions, so you do not need this installed.
+    dependencies:
+      wallpaper: 5.0.1
+    dev: true
 
   /@types/yauzl@2.10.1:
     resolution: {integrity: sha512-CHzgNU3qYBnp/O4S3yv2tXPlvMTq0YWSTVg2/JYLqWZGHwwgJGAwd00poay/11asPq8wLFwHzubyInqHIFmmiw==}
@@ -5319,6 +5332,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
+
+  /wallpaper@5.0.1:
+    resolution: {integrity: sha512-yB9sBVfosR+NVabo/Ej21hga5u55NQUUdDVoo4LwrLJDRA+ezzX4wmNGwl5yxx/fkBgTADMqLL8ldnfN8TI9hQ==}
+    engines: {node: '>=12'}
 
   /which-boxed-primitive@1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}

@@ -8,6 +8,12 @@ const api = {
   },
   openSystemDirectory(){
     return ipcRenderer.invoke('openSystemDirectory')
+  },
+  openSaveDirectory(configPath){
+    ipcRenderer.send('openSaveDirectory', configPath)
+  },
+  fullScreen(){
+    ipcRenderer.send('fullScreen')
   }
 }
 

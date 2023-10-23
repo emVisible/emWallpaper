@@ -4,13 +4,18 @@ import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import './download'
 import './openSysDir'
+import './openSaveDir'
+import './fullScreen'
 
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
-    resizable: false,
+    minWidth:800,
+    minHeight:600,
+    fullscreen:false,
+    resizable: true,
     frame: false,
     show: false,
     autoHideMenuBar: true,
@@ -20,6 +25,8 @@ function createWindow(): void {
       sandbox: false
     }
   })
+  if (is.dev) mainWindow.webContents.openDevTools()
+  mainWindow.setAspectRatio(16 / 9)
 
   mainWindow.webContents.session.webRequest.onBeforeSendHeaders((details, callback) => {
     callback({ requestHeaders: { Origin: '*', ...details.requestHeaders } })

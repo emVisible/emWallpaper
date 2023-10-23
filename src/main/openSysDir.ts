@@ -1,7 +1,6 @@
-import { BrowserWindow, dialog, ipcMain } from 'electron'
-const getWin = (win: Electron.IpcMainEvent | Electron.IpcMainInvokeEvent) => {
-  return BrowserWindow.fromWebContents(win.sender)
-}
+import { dialog, ipcMain } from 'electron'
+import { getWin } from './utils'
+
 
 ipcMain.handle('openSystemDirectory', async(event: Electron.IpcMainInvokeEvent) => {
   console.log('open dir')
@@ -11,6 +10,6 @@ ipcMain.handle('openSystemDirectory', async(event: Electron.IpcMainInvokeEvent) 
   if (res.canceled === false && res.filePaths) {
     return res.filePaths
   }else {
-    return 
+    return
   }
 })

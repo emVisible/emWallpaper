@@ -4,8 +4,10 @@ declare global {
   interface Window {
     electron: ElectronAPI
     api: {
-      downloadImage:Function,
+      downloadImage: Function
       openSystemDirectory: Function
+      openSaveDirectory: Function
+      fullScreen: Function
     }
   }
 }

@@ -1,10 +1,9 @@
 import { Alert, Divider, Layout, Progress, Space } from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
 import { useEffect, useState } from 'react'
-import { useNavigate, useRouteError } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function ErrorPage() {
-  const error = useRouteError() as any
   const [seconds, setSeconds] = useState(3)
   const [percentage, setPercentage] = useState(0)
   const navigate = useNavigate()
