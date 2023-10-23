@@ -1,23 +1,16 @@
 import { Config, StereoNesting } from '@icon-park/react'
 import '@renderer/assets/global.scss'
-import { useAppDispatch, useAppSelector } from '@renderer/redux/hooks'
+import store from '@renderer/redux'
 import { stateChange } from '@renderer/redux/routeReducer'
 import { Button } from 'antd'
-import { BrowserRouter, Link, Navigate, Router, useLocation } from 'react-router-dom'
-import ErrorPage from './error'
-import store from '@renderer/redux'
+import { Link, useLocation } from 'react-router-dom'
 
 /**
  * 定义路由以及跳转
  * ??? 为什么会一次加载两遍 ?
  */
-export default function (props) {
+export default function () {
   const pathname = useLocation().pathname
-
-  // const routeState = useAppSelector((state) => state.route.value)
-  // const dispatch = useAppDispatch()
-  const routeState = store.getState().routeReducer.value
-
   return (
     <section className="nodrag">
       {pathname == '/home' ? (

@@ -1,4 +1,4 @@
-import { BrowserWindow, Menu, MenuItemConstructorOptions, app, dialog, ipcMain } from 'electron'
+import { Menu, MenuItemConstructorOptions, dialog, ipcMain } from 'electron'
 import { createWriteStream } from 'fs'
 import path from 'path'
 import { pipeline } from 'stream'
