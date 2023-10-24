@@ -65,7 +65,7 @@ export default function () {
                   className="h-[300px] overflow-hidden flex justify-center items-center"
                 >
                   <Image
-                    className="w-full h-full"
+                    className="w-full h-full "
                     onAuxClick={() => {
                       window.api.downloadImage(url, name, configPath)
                     }}
