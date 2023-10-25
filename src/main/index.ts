@@ -6,6 +6,7 @@ import './download'
 import './openSysDir'
 import './openSaveDir'
 import './fullScreen'
+import {createTray} from './tray'
 
 function createWindow(): void {
   // Create the browser window.
@@ -63,6 +64,7 @@ function createWindow(): void {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  createTray(createWindow)
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 

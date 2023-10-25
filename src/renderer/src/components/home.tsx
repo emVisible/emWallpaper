@@ -22,7 +22,7 @@ export default function () {
         try {
           setTimeout(() => {
             setUrls((prev) => [...prev, url])
-          }, 600 * index)
+          }, 2000 * index)
         } catch (err) {
           console.log('err', err)
         } finally {
@@ -62,10 +62,10 @@ export default function () {
               <Col span={8} key={name.match(/.+(?=\.)/)![0]}>
                 <Card
                   size="small"
-                  className="h-[300px] overflow-hidden flex justify-center items-center"
+                  className="h-[340px] overflow-hidden flex justify-center items-center"
                 >
                   <Image
-                    className="w-full h-full "
+                    className="w-full h-full max-h-[300px]"
                     onAuxClick={() => {
                       window.api.downloadImage(url, name, configPath)
                     }}

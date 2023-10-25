@@ -40,23 +40,23 @@ async def list_urls(request):
 
 
 
-async def crawl():
-    print("⭐⭐⭐⭐⭐⭐Start")
-    crawler = CrawlerProcess(get_project_settings())
-    try:
-        crawler.crawl("wallpaper")
-        crawler.start()
-    except Exception as e:
-        print(f"An error occurred during crawling: {e}")
+# async def crawl():
+#     print("⭐⭐⭐⭐⭐⭐Start")
+#     crawler = CrawlerProcess(get_project_settings())
+#     try:
+#         crawler.crawl("wallpaper")
+#         crawler.start()
+#     except Exception as e:
+#         print(f"An error occurred during crawling: {e}")
 
-@api.route("/crawl", methods=["POST"])
-async def update_data(request):
-    try:
-        # app.add_task(await crawl(), name="wallpaper")
-        task = asyncio.create_task(crawl())
-        running_tasks.add(task)
-        task.add_done_callback(lambda e:running_tasks.remove(e))
+# @api.route("/crawl", methods=["POST"])
+# async def update_data(request):
+#     try:
+#         # app.add_task(await crawl(), name="wallpaper")
+#         task = asyncio.create_task(crawl())
+#         running_tasks.add(task)
+#         task.add_done_callback(lambda e:running_tasks.remove(e))
 
-    except:
-        print("wrong------------------------")
-    return text("Crawling started")
+#     except:
+#         print("wrong------------------------")
+#     return text("Crawling started")
