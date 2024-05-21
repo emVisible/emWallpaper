@@ -1,34 +1,21 @@
 # emwallpaper
+桌面壁纸软件, 支持windows端
 
-An Electron application with React and TypeScript
+图片加载需要科学支持
 
-## Recommended IDE Setup
+## 启动项目
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-
-## Project Setup
-
-### Install
-
-```bash
-$ pnpm install
+进入开发模式
 ```
+  启动前端:
+    pnpm i
+    pnpm dev
 
-### Development
-
-```bash
-$ pnpm dev
-```
-
-### Build
-
-```bash
-# For windows
-$ pnpm build:win
-
-# For macOS
-$ pnpm build:mac
-
-# For Linux
-$ pnpm build:linux
+  启动后端:
+    安装依赖
+    cd wallpaper
+    pip install -r requirements.txt
+    启动服务
+    cd wallpaper
+    sanic server
 ```
